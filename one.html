@@ -43,6 +43,7 @@
             color: #E5E7EB;
             min-height: 100vh;
             overflow-x: hidden;
+            line-height: 1.7;
         }
         .accent-color {
             background: linear-gradient(135deg, #38BDF8, #0EA5E9);
@@ -161,11 +162,12 @@
             transform: scale(1.1);
         }
         .section {
-            padding: 8rem 1rem;
+            padding: 10rem 1rem;
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
             position: relative;
+            z-index: 2;
         }
         
         .section-title {
@@ -215,32 +217,240 @@
             background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), transparent);
         }
         
-        /* Enhanced section backgrounds */
-        .section:nth-child(even) {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.4) 0%, rgba(30, 41, 59, 0.2) 100%);
+        /* Enhanced Dynamic Backgrounds */
+        .hero-bg {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
         
-        .section:nth-child(odd) {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.3) 0%, rgba(15, 23, 42, 0.1) 100%);
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338BDF8' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.6;
+            animation: float 20s ease-in-out infinite;
         }
         
-        /* Light mode section backgrounds */
-        body.light-mode .section:nth-child(even) {
-            background: linear-gradient(135deg, rgba(241, 245, 249, 0.4) 0%, rgba(226, 232, 240, 0.2) 100%);
+        .about-bg {
+            background: 
+                radial-gradient(circle at 10% 90%, rgba(124, 58, 237, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 90% 10%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e293b 100%);
+            position: relative;
+            overflow: hidden;
         }
         
-        body.light-mode .section:nth-child(odd) {
-            background: linear-gradient(135deg, rgba(226, 232, 240, 0.3) 0%, rgba(241, 245, 249, 0.1) 100%);
+        .about-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%237C3AED' fill-opacity='0.04'%3E%3Cpath d='M40 40c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.4;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+        
+        .skills-bg {
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 60% 60%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skills-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310B981' fill-opacity='0.03'%3E%3Cpolygon points='50 0 61.18 35.36 98.04 35.36 68.41 57.28 79.59 92.64 50 70.72 20.41 92.64 31.59 57.28 1.96 35.36 38.82 35.36'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+            animation: float 30s ease-in-out infinite;
+        }
+        
+        .projects-bg {
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(245, 158, 11, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 50% 20%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e293b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .projects-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F59E0B' fill-opacity='0.04'%3E%3Cpath d='M60 60c0-16.569-13.431-30-30-30s-30 13.431-30 30 13.431 30 30 30 30-13.431 30-30zm0 0c0 16.569 13.431 30 30 30s30-13.431 30-30-13.431-30-30-30-30 13.431-30 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.4;
+            animation: float 35s ease-in-out infinite reverse;
+        }
+        
+        .experience-bg {
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(239, 68, 68, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .experience-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                url("data:image/svg+xml,%3Csvg width='90' height='90' viewBox='0 0 90 90' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23EF4444' fill-opacity='0.03'%3E%3Crect x='30' y='30' width='30' height='30' rx='5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+            animation: float 28s ease-in-out infinite;
+        }
+        
+        .certifications-bg {
+            background: 
+                radial-gradient(circle at 70% 20%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 30% 80%, rgba(124, 58, 237, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 60%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e293b 100%);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .certifications-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                url("data:image/svg+xml,%3Csvg width='110' height='110' viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310B981' fill-opacity='0.04'%3E%3Cpath d='M55 55c0-15.18-12.32-27.5-27.5-27.5S0 39.82 0 55s12.32 27.5 27.5 27.5S55 70.18 55 55zm0 0c0 15.18 12.32 27.5 27.5 27.5S110 70.18 110 55s-12.32-27.5-27.5-27.5S55 39.82 55 55z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.4;
+            animation: float 32s ease-in-out infinite reverse;
+        }
+        
+        .testimonials-bg {
+            background: 
+                radial-gradient(circle at 40% 30%, rgba(124, 58, 237, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 60% 70%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 20% 60%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                url("data:image/svg+xml,%3Csvg width='130' height='130' viewBox='0 0 130 130' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%237C3AED' fill-opacity='0.03'%3E%3Cpath d='M65 65c0-17.95-14.55-32.5-32.5-32.5S0 47.05 0 65s14.55 32.5 32.5 32.5S65 82.95 65 65zm0 0c0 17.95 14.55 32.5 32.5 32.5S130 82.95 130 65s-14.55-32.5-32.5-32.5S65 47.05 65 65z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.4;
+            animation: float 38s ease-in-out infinite;
+        }
+        
+        .contact-bg {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e293b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                url("data:image/svg+xml,%3Csvg width='140' height='140' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338BDF8' fill-opacity='0.04'%3E%3Cpath d='M70 70c0-19.33-15.67-35-35-35S0 50.67 0 70s15.67 35 35 35 35-15.67 35-35zm0 0c0 19.33 15.67 35 35 35s35-15.67 35-35-15.67-35-35-35-35 15.67-35 35z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+            animation: float 40s ease-in-out infinite reverse;
+        }
+        
+        /* Light mode backgrounds */
+        body.light-mode .hero-bg,
+        body.light-mode .about-bg,
+        body.light-mode .skills-bg,
+        body.light-mode .projects-bg,
+        body.light-mode .experience-bg,
+        body.light-mode .certifications-bg,
+        body.light-mode .testimonials-bg,
+        body.light-mode .contact-bg {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+                linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f8fafc 100%);
+        }
+        
+        /* Floating animation for background patterns */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(1deg); }
+            50% { transform: translateY(-5px) rotate(0deg); }
+            75% { transform: translateY(-15px) rotate(-1deg); }
+        }
+        
+        /* Enhanced glass card effect for better contrast */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Section content overlay for better readability */
+        .section > .container,
+        .section > div:not(.fluid-canvas) {
+            position: relative;
+            z-index: 10;
         }
         .glass-card {
-            background: rgba(30, 41, 59, 0.4);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(56, 189, 248, 0.2);
             border-radius: 1rem;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             transform-style: preserve-3d;
             perspective: 1000px;
         }
@@ -468,7 +678,7 @@
             color: #38BDF8;
             border-radius: 25px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             font-weight: 500;
         }
         
@@ -481,7 +691,13 @@
         
         /* Project Cards with Filter */
         .project-card {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px) rotateX(2deg) rotateY(2deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
         
         .project-card.hidden {
@@ -545,19 +761,19 @@
         /* Mouse Trail Effect */
         .mouse-trail {
             position: fixed;
-            width: 6px;
-            height: 6px;
-            background: #38BDF8;
+            width: 4px;
+            height: 4px;
+            background: rgba(56, 189, 248, 0.6);
             border-radius: 50%;
             pointer-events: none;
             z-index: 9998;
-            opacity: 0.7;
+            opacity: 0.5;
         }
     </style>
 </head>
 <body class="antialiased">
     <!-- Scroll Progress Indicator -->
-        <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
     
     <!-- New Back to Top Button -->
     <button id="backToTop" class="back-to-top-btn" title="Back to Top" aria-label="Back to Top">
@@ -576,9 +792,9 @@
                         <a href="#skills" class="hover:text-sky-400 transition-colors tech-glow hover:border-b-2 border-sky-400 pb-1">Skills</a>
                         <a href="#projects" class="hover:text-sky-400 transition-colors tech-glow hover:border-b-2 border-sky-400 pb-1">Projects</a>
                         <a href="#experience" class="hover:text-sky-400 transition-colors tech-glow hover:border-b-2 border-sky-400 pb-1">Experience</a>
-                        <a href="#certifications" class="hover:text-sky-400 transition-colors tech-glow hover:border-b-2 border-sky-400 pb-1">Certifications</a>
-                        <a href="#testimonials" class="hover:text-sky-400 transition-colors tech-glow hover:border-b-2 border-sky-400 pb-1">Testimonials</a>
-                        <a href="#contact" class="hover:text-sky-400 transition-colors tech-glow hover:border-b-2 border-sky-400 pb-1">Contact</a>
+                <a href="#certifications" class="hover:text-sky-400 transition-colors tech-glow hover:border-b-2 border-sky-400 pb-1">Certifications</a>
+                <a href="#testimonials" class="hover:text-sky-400 transition-colors tech-glow hover:border-b-2 border-sky-400 pb-1">Testimonials</a>
+                <a href="#contact" class="hover:text-sky-400 transition-colors tech-glow hover:border-b-2 border-sky-400 pb-1">Contact</a>
             </div>
             <div class="hidden md:flex items-center space-x-3">
                 <button id="theme-toggle" class="text-white hover:text-sky-400 transition-colors theme-toggle p-1.5 rounded-lg hover:bg-sky-500/10" title="Toggle Theme">
@@ -647,7 +863,7 @@
 
     <main>
         <!-- Hero Section -->
-        <section id="home" class="min-h-screen flex items-center justify-center text-center relative overflow-hidden fluid-bg">
+        <section id="home" class="min-h-screen flex items-center justify-center text-center relative overflow-hidden hero-bg">
             <div id="particles-js" class="absolute inset-0"></div>
             <canvas id="hero-fluid-canvas" class="fluid-canvas"></canvas>
             <div class="z-20 px-4">
@@ -681,7 +897,7 @@
                     <a href="#projects" class="bg-accent hover:bg-purple-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-all transform hover:scale-105 pulse">
                         View My Work
                     </a>
-                    <a href="#contact" class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-all transform hover:scale-105 pulse">
+                    <a href="#contact" class="bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-all transform hover:scale-105 pulse shadow-lg hover:shadow-xl">
                         Hire Me
                     </a>
                 </div>
@@ -689,7 +905,7 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" class="section container mx-auto">
+        <section id="about" class="section container mx-auto about-bg">
             <div class="text-center mb-16">
                 <h2 class="section-title">About Me</h2>
                 <p class="section-subtitle">Get to know me better</p>
@@ -723,7 +939,7 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="section bg-gray-900/50 fluid-bg">
+        <section id="skills" class="section skills-bg">
             <canvas id="skills-fluid-canvas" class="fluid-canvas"></canvas>
             <div class="container mx-auto relative z-10">
                 <div class="text-center mb-16">
@@ -956,7 +1172,7 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="section container mx-auto fluid-bg">
+        <section id="projects" class="section container mx-auto projects-bg">
             <canvas id="projects-fluid-canvas" class="fluid-canvas"></canvas>
             <div class="text-center mb-16 relative z-10">
                 <h2 class="section-title">Featured Projects</h2>
@@ -976,8 +1192,11 @@
                 <!-- Project 1: Civilinc -->
                 <div class="glass-card overflow-hidden flex flex-col project-card floating hover:border-purple-500/50" data-category="fullstack ml">
                     <div class="relative">
-                        <img src="assets/CIVILINC.png" alt="Civilinc Project" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 right-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">Featured</div>
+                        <img src="assets/CIVILINC.png" alt="Civilinc Project" class="w-full h-48 object-cover" loading="lazy">
+                        <div class="absolute top-4 right-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-lg">
+                            <span class="w-2 h-2 bg-yellow-300 rounded-full animate-pulse"></span>
+                            Featured
+                        </div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-2xl font-bold mb-2 text-white">Civilinc - Smart Civic Infrastructure</h3>
@@ -1000,7 +1219,7 @@
                 <!-- Project 2: ShipTrack Pro -->
                 <div class="glass-card overflow-hidden flex flex-col project-card floating hover:border-green-500/50" data-category="fullstack">
                     <div class="relative">
-                        <img src="assets/SHIPTRACK PRO.webp" alt="ShipTrack Pro Project" class="w-full h-48 object-cover">
+                        <img src="assets/SHIPTRACK PRO.webp" alt="ShipTrack Pro Project" class="w-full h-48 object-cover" loading="lazy">
                         <div class="absolute top-4 right-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">Popular</div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
@@ -1020,7 +1239,7 @@
                 <!-- Project 3: Quick Byte -->
                 <div class="glass-card overflow-hidden flex flex-col project-card floating hover:border-amber-500/50" data-category="uiux">
                     <div class="relative">
-                        <img src="assets/FOOD_APP UI UX DESIGN.png" alt="Quick Byte Food Delivery App" class="w-full h-48 object-cover">
+                        <img src="assets/FOOD_APP UI UX DESIGN.png" alt="Quick Byte Food Delivery App" class="w-full h-48 object-cover" loading="lazy">
                         <div class="absolute top-4 right-4 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full">Design</div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
@@ -1040,7 +1259,7 @@
                 <!-- Project 4: AI Disease Predictor -->
                 <div class="glass-card overflow-hidden flex flex-col project-card floating hover:border-sky-500/50" data-category="ml">
                     <div class="relative">
-                        <img src="assets/AI DISEASE PREDICTOR.webp" alt="AI Disease Predictor Project" class="w-full h-48 object-cover">
+                        <img src="assets/AI DISEASE PREDICTOR.webp" alt="AI Disease Predictor Project" class="w-full h-48 object-cover" loading="lazy">
                         <div class="absolute top-4 right-4 bg-sky-600 text-white text-xs font-bold px-3 py-1 rounded-full">AI/ML</div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
@@ -1060,7 +1279,7 @@
                 <!-- Project 6: Digital Piano -->
                 <div class="glass-card overflow-hidden flex flex-col project-card floating hover:border-emerald-500/50" data-category="hardware">
                     <div class="relative">
-                        <img src="assets/WhatsApp Image 2025-08-25 at 15.17.39.jpeg" alt="Digital Piano Project" class="w-full h-48 object-cover">
+                        <img src="assets/WhatsApp Image 2025-08-25 at 15.17.39.jpeg" alt="Digital Piano Project" class="w-full h-48 object-cover" loading="lazy">
                         <div class="absolute top-4 right-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">Hardware</div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
@@ -1084,7 +1303,7 @@
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="section bg-gray-900/50">
+        <section id="experience" class="section experience-bg">
             <div class="container mx-auto">
                 <div class="text-center mb-16">
                     <h2 class="section-title">Work Experience</h2>
@@ -1132,7 +1351,7 @@
         </section>
 
         <!-- Certifications Section -->
-        <section id="certifications" class="section bg-gray-900/50">
+        <section id="certifications" class="section certifications-bg">
             <div class="container mx-auto">
                 <div class="text-center mb-16">
                     <h2 class="section-title">Professional Certifications</h2>
@@ -1177,7 +1396,7 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="section bg-gray-900/50">
+        <section id="testimonials" class="section testimonials-bg">
             <div class="container mx-auto">
                 <div class="text-center mb-16">
                     <h2 class="section-title">What People Say</h2>
@@ -1214,7 +1433,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="section container mx-auto text-center">
+        <section id="contact" class="section container mx-auto text-center contact-bg">
             <div class="text-center mb-16">
                 <h2 class="section-title">Let's Build Something Amazing</h2>
                 <p class="section-subtitle">Get in touch with me</p>
@@ -1259,6 +1478,16 @@
                 <div class="absolute -top-4 left-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full">AI Powered</div>
                 <h3 class="text-3xl font-bold mb-4">✨ AI Project Idea Generator</h3>
                 <p class="text-gray-400 mb-6">Curious about what we could build together? Enter a topic or industry and let AI brainstorm a project idea for you!</p>
+                <div class="mb-4 text-sm text-gray-500">
+                    <p class="mb-2">💡 <strong>Example prompts:</strong></p>
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded">fitness tracking</span>
+                        <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded">local event discovery</span>
+                        <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded">smart home automation</span>
+                        <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded">food delivery</span>
+                        <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded">learning management</span>
+                    </div>
+                </div>
                 <div class="glass-card p-8 floating hover:border-purple-500/50">
                     <textarea id="idea-prompt" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:ring-2 focus:ring-purple-500 focus:outline-none" rows="2" placeholder="e.g., fitness tracking, local event discovery..."></textarea>
                     <button id="generate-idea-btn" class="mt-4 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-all transform hover:scale-105 w-full pulse">
@@ -1684,7 +1913,7 @@
 
         // Mouse Trail Effect
         const trails = [];
-        const maxTrails = 20;
+        const maxTrails = window.innerWidth < 768 ? 10 : 20; // Reduce trails on mobile
 
         document.addEventListener('mousemove', (e) => {
             const trail = document.createElement('div');
