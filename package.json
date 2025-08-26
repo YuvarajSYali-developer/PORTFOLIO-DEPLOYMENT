@@ -1,0 +1,71 @@
+{
+  "name": "yuvaraj-portfolio",
+  "version": "1.0.0",
+  "description": "Yuvaraj S Yali's Portfolio Website - A modern, responsive portfolio showcasing skills, projects, and experience",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -p 8000 -o",
+    "dev": "live-server --port=8000 --open=/",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "echo 'Deploy to your preferred hosting service'",
+    "lint": "echo 'Add linting tools if needed'",
+    "test": "echo 'Add testing framework if needed'"
+  },
+  "keywords": [
+    "portfolio",
+    "developer",
+    "full-stack",
+    "ui-ux",
+    "civic-tech",
+    "machine-learning",
+    "responsive",
+    "modern",
+    "glass-morphism",
+    "animations"
+  ],
+  "author": {
+    "name": "Yuvaraj S Yali",
+    "email": "yuvarajyali@gmail.com",
+    "url": "https://www.linkedin.com/in/yuvaraj-s-yali/"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YuvarajSYali-developer/portfolio-website.git"
+  },
+  "homepage": "https://yuvarajsyali.github.io/portfolio-website",
+  "bugs": {
+    "url": "https://github.com/YuvarajSYali-developer/portfolio-website/issues"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "dependencies": {},
+  "optionalDependencies": {},
+  "peerDependencies": {},
+  "bundledDependencies": [],
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "cpu": [
+    "x64",
+    "arm64"
+  ],
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}
