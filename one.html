@@ -2067,16 +2067,8 @@
             generateBtn.disabled = true;
             generateBtn.innerText = 'Generating...';
 
-            const apiKey = ""; // API key will be provided by the environment
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-            
-            const prompt = `Generate a creative and modern project idea based on the following topic: "${userPrompt}".
-            Provide a project title, a short description (2-3 sentences), and a suggested tech stack (3-5 technologies).
-            Format the output as a JSON object with the keys: "title", "description", and "tech_stack" (as an array of strings).`;
+            const apiUrl = '/.netlify/functions/gemini-idea';
 
-            let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-            const payload = { contents: chatHistory };
-            
             try {
                 // Using fetch with exponential backoff
                 let response;
@@ -2086,7 +2078,7 @@
                     response = await fetch(apiUrl, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
+                        body: JSON.stringify({ prompt: userPrompt })
                     });
                     if (response.ok) break;
                     await new Promise(res => setTimeout(res, delay));
@@ -2094,21 +2086,18 @@
                 }
 
                 if (!response.ok) {
-                    throw new Error(`API request failed with status ${response.status}`);
+                    let errText = '';
+                    try {
+                        errText = await response.text();
+                        const maybeJson = JSON.parse(errText);
+                        errText = maybeJson.error || errText;
+                    } catch (_) { /* keep raw text */ }
+                    throw new Error(`API request failed (${response.status}): ${errText}`);
                 }
-                
-                const result = await response.json();
-                
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    
-                    // The response might be plain text that looks like JSON, so we need to parse it.
-                    const responseText = result.candidates[0].content.parts[0].text;
-                    const cleanJsonString = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
-                    const idea = JSON.parse(cleanJsonString);
 
-                    ideaResultDiv.innerHTML = `
+                const idea = await response.json();
+
+                ideaResultDiv.innerHTML = `
                         <h4 class="text-2xl font-bold text-sky-400 mb-2">${idea.title}</h4>
                         <p class="text-gray-300 mb-4">${idea.description}</p>
                         <h5 class="font-semibold text-white mb-2">Suggested Tech Stack:</h5>
@@ -2116,12 +2105,10 @@
                             ${idea.tech_stack.map(tech => `<span class="bg-gray-700 text-gray-200 text-sm font-medium px-2.5 py-0.5 rounded">${tech}</span>`).join('')}
                         </div>
                     `;
-                } else {
-                    throw new Error("Invalid response structure from API.");
-                }
             } catch (error) {
                 console.error("Error fetching project idea:", error);
-                ideaResultDiv.innerHTML = `<p class="text-red-400">Sorry, something went wrong. Please try again later.</p>`;
+                const msg = (error && error.message) ? error.message : 'Unknown error';
+                ideaResultDiv.innerHTML = `<p class="text-red-400">${msg.includes('GEMINI_API_KEY') ? 'Server is missing GEMINI_API_KEY. Set it in Netlify env vars and redeploy.' : 'Sorry, something went wrong. Please try again later.'}</p>`;
             } finally {
                 loader.classList.add('hidden');
                 generateBtn.disabled = false;
